@@ -1,0 +1,4 @@
+# fish_id rarity weight bite_ms escape_ms
+sardine 1 5 100 200
+sea-bass 3 2 150 120
+golden-koi 5 1 400 80

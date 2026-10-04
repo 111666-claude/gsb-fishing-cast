@@ -1,0 +1,3 @@
+# rod_id power
+bamboo 50
+carbon 80
