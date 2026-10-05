@@ -22,8 +22,8 @@ def main(argv=None):
     args = build_parser().parse_args(argv)
     judge = Judge(load_pond(args.pond), load_rods(args.rods))
     if args.sample == "edge":
-        # 金枪鱼咬钩 100ms、逃逸 200ms，正好在第 300ms 收线。
-        print("hooked=%s" % judge.reel("c1", "bamboo", 100, 0, 300))
+        # 沙丁鱼咬钩 100ms、逃逸 200ms，正好在第 300ms（逃脱时刻）收线。
+        print("hooked=%s" % judge.reel("c1", "bamboo", 20, 0, 300))
     elif args.sample == "power":
         # 稀有度 5 的鱼需要 80 到 120 的力度。
         judge.pond = [{"id": "golden-koi", "rarity": 5, "weight": 1, "bite": 0, "escape": 1000}]
@@ -33,11 +33,11 @@ def main(argv=None):
             {"id": "sardine", "rarity": 1, "weight": 1, "bite": 0, "escape": 1000},
             {"id": "sea-bass", "rarity": 1, "weight": 5, "bite": 0, "escape": 1000},
         ]
-        print("fish=%s" % judge.reel("c1", "bamboo", 60, 0, 100))
+        print("fish=%s" % judge.reel("c1", "bamboo", 20, 0, 100))
     elif args.sample == "dup":
         judge.pond = [{"id": "sardine", "rarity": 1, "weight": 1, "bite": 0, "escape": 1000}]
-        judge.reel("c1", "bamboo", 60, 0, 100)
-        judge.reel("c1", "bamboo", 60, 0, 100)
+        judge.reel("c1", "bamboo", 20, 0, 100)
+        judge.reel("c1", "bamboo", 20, 0, 100)
         print("hooks=%d" % len(judge.hooked))
     elif args.sample == "work":
         judge.pond = [
